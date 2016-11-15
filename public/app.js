@@ -16,7 +16,7 @@ app.config(["$urlRouterProvider","$stateProvider",function($urlRouterProvider,$s
 
     .state('home',{
         url:'/home',
-        templateUrl:'Views/home.html',
+        templateUrl:'Views/store.html',
 
     })
 

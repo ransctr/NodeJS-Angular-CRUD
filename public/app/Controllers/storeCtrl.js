@@ -58,11 +58,14 @@ app.controller("storeCtrl",["$scope","$rootScope","cartFac",function($scope,$roo
       $scope.addToCart = function(item){
           cartFac.addItemToCart(item)
           //set cart items amount
+          $scope.$parent.showToast("Item Added");
           $rootScope.cartAmount = cartFac.cartItems.length
+
       }
 
+
     function init(){
-    $rootScope.cartAmount = 0
+    $rootScope.cartAmount = cartFac.cartItems.length
     }
     return init();
 }]);

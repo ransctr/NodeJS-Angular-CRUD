@@ -7,14 +7,14 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/cart.css">
         <link rel="stylesheet" href="css/loginSignup.css">
-        <link rel="icon" href="images/favicon.png" type="image/x-icon"><link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+       <!-- <link rel="icon" href="images/favicon.png" type="image/x-icon"><link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">-->
 
         <title>My Book Store</title>
     </head>
 
 
     <body>
-       <div class="master_container" ng-controller="homeCtrl">
+       <div class="master_container" ng-controller="mainCtrl">
             <header class="header">
                 <div class="header_cart">
                 <div class="user_ui">{{userLoggedIn.name}}
@@ -23,14 +23,7 @@
                 </div>
                 <a ng-click="goToCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Cart(<span class="cart_amount">{{cartAmount}}</span>)</a></div>
                 <div class="logo_section"><a ui-sref="home"><h1 style="color: white">Book Store</h1></a></div>
-                   <div class="navbar">
-                       <div class="nav_wrapper">
 
-                           <nav class="nav_about nav" ui-sref="home" name="home">Home</nav>
-                           <nav class="nav_trade nav" ui-sref="store" name="store">Store</nav>
-                           <nav class="nav_contact nav" ui-sref="register" name="register">Register</nav>
-                       </div>
-                    </div>
             </header>
             <section class="container">
                 <div class="title"></div>
@@ -63,7 +56,7 @@
     <script src="app/Controllers/cartCtrl.js"></script>
     <script src="app/Controllers/loginCtrl.js"></script>
     <script src="app/Controllers/regCtrl.js"></script>
-    <script src="app/Controllers/homeCtrl.js"></script>
+    <script src="app/Controllers/mainCtrl.js"></script>
     <script src="app/Controllers/storeCtrl.js"></script>
 
     <script src="app/Service/userService.js"></script>

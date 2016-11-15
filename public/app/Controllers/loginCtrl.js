@@ -8,7 +8,6 @@ app.controller("loginCtrl",["$scope","$rootScope","$state","userService",functio
     }
 
 
-
     $scope.autentication = function(){
         //simple login logic
         //check DB if user exist
@@ -21,7 +20,7 @@ app.controller("loginCtrl",["$scope","$rootScope","$state","userService",functio
                //Pass correct
                $rootScope.isLoggedIn = true;
                $rootScope.userLoggedIn = user.data;
-               //itemsFac.loggedUser = user.data.name
+               localStorage.setItem("loggedUser", JSON.stringify(user.data));
                 $state.go('home')
            } else {
                $scope.message = "Wrong password"
