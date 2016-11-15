@@ -1,0 +1,34 @@
+.inner_container{
+    line-height: 1.6rem;
+    color:#464646;
+}
+
+.inner_container a{
+    color: #ff6c00 ;
+    transition: none;
+}
+
+.inner_container a:hover{
+    border-bottom: 2px solid #ff6c00;
+}
+
+.map{
+    text-align: left;
+  margin-top: 20px;
+    background-image: url(../images/map.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 654px;
+}
+
+.map_img{
+    width: 100%;
+    max-width: 654px;
+    visibility: hidden;
+}
+
+@media all and (max-width:480px) {
+    .map{
+        background-size: 480px;
+    }
+}

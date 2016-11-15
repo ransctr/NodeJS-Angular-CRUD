@@ -1,0 +1,19 @@
+<div ng-controller="storeCtrl" class="flex-row">
+
+    <div class="filters side_links">
+        <ul>
+            <li><a ng-click="orderByMe('price')">Price</a></li>
+            <li><a ng-click="orderByMe('name')">Name</a></li>
+
+        </ul>
+
+    </div>
+    <div class="store_items_container">
+
+        <div ng-repeat="itm in items  | orderBy:myOrderBy" class="store_item">
+            <div  item></div>
+        </div>
+
+    </div>
+
+</div>

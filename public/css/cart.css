@@ -1,0 +1,33 @@
+.cart_page .store_item{
+    width: 100%;
+     max-width: 100%;
+    min-width: 190px;
+    min-height: auto;
+    margin: 0 10px;
+    margin-bottom: 30px;
+
+}
+
+.cart_page .store_item_wrapper {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.cart_page .item_imageBG {
+     height: auto;
+    width: 100%;
+    min-height: 115px;
+     background-color: rgba(255, 255, 255, 0)
+}
+
+.cart_page .item_imageCover img{
+    position: relative;
+    top: 0px;
+    width: 70px;
+    max-height: 200px;
+}

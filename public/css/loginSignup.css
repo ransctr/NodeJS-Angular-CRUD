@@ -1,0 +1,16 @@
+.login_message{
+    color: red
+}
+
+.reg_btn{
+
+}
+
+.user_ui{
+    color:#ffffff;
+
+}
+.user_ui .logout{
+    color:#b1b1b1;
+    cursor: pointer
+}
