@@ -10,13 +10,15 @@ app.controller('cartCtrl', ['$scope',"$state", 'cartFac','$mdDialog',"userServic
           });
     }
 
+
+
     $scope.getUserPurchases = function () {
         userService.getUserPurchases().then(function (callback) {
             console.log("purchases retrived: " + callback)
             $mdDialog.show({
-
-                template: "purchases here",
+                templateUrl: "app/Templates/Dialogs/purchasesList.html",
                 clickOutsideToClose: true,
+
                 fullscreen: $scope.customFullscreen //
             });
         });
@@ -26,6 +28,7 @@ app.controller('cartCtrl', ['$scope',"$state", 'cartFac','$mdDialog',"userServic
 
     function init(){
     $scope.items = cartFac.cartItems;
+
     }
 
 

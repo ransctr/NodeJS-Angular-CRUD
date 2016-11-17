@@ -55,11 +55,16 @@ app.controller("storeCtrl",["$scope","$rootScope","cartFac",function($scope,$roo
       $scope.myOrderBy = x;
   }
 
-      $scope.addToCart = function(item){
+      $scope.addToCart = function(item, i){
+           if(!$scope.items[i].added){
+          $scope.items[i].added =true;
+              } else{
+                  return;
+              }
           cartFac.addItemToCart(item)
           //set cart items amount
           $scope.$parent.showToast("Item Added");
-          $rootScope.cartAmount = cartFac.cartItems.length
+          $rootScope.cartAmount = cartFac.cartItems.length;
 
       }
 

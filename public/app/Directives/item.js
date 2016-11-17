@@ -1,8 +1,20 @@
 
+
 app.directive("item", function() {
     return {
+        restrict: 'A',
+        /*scope : {
+            itmmm : '=',
+        },*/
+        replace: true,
+        templateUrl : 'app/Templates/Directives/item.html',
+//        template : '<div>item= {{itm.price}}</div>',
+        link: function(scope, element, attrs){
+            //console.log(element);
+        },
+        controller: function($scope){
 
-        template : '<div class="store_item_wrapper"><div class="item_imageBG"><div class="item_imageCover"><a href="item.html"><img src="{{itm.img_url}}" alt=""></a></div><div class="item_bookHolderBG"></div></div><div class="item_desc"><div class="item_desc_title">{{itm.title}}</div><div class="item_desc_text"><strong>By </strong>{{itm.by}}</div></div><div class="item_buttons"><button class="item_addToCart_btn" ng-click="addToCart(itm)">$<span class="item_price">{{itm.price}}</span><i class="fa fa-cart-plus" aria-hidden="true"></i></button><button class="item_readMore_btn">Read More</button></div></div>',
+        },
 
     };
 });
