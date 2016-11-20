@@ -15,16 +15,22 @@
 
     <body>
        <div class="master_container" ng-controller="mainCtrl">
-            <header class="header">
-                <div class="header_cart">
+        <header class="header">
+            <div class="header_inner">
                 <div class="user_ui">{{userLoggedIn.name}}
-                <a ui-sref="login" ng-hide="isLoggedIn"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
-                <a class="logout" ng-click="logOut()" ng-show="isLoggedIn"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                    <a ui-sref="login" ng-hide="isLoggedIn"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                    <a class="logout" ng-click="logOut()" ng-show="isLoggedIn"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                 </div>
-                <a ng-click="goToCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Cart(<span class="cart_amount">{{cartAmount}}</span>)</a></div>
-                <div class="logo_section"><a ui-sref="home"><h1 style="color: white">Book Store</h1></a></div>
-
-            </header>
+                <div class="logo_section">
+                    <a ui-sref="home">
+                        <h1 style="color: white">Book Store</h1>
+                    </a>
+                </div>
+                <div class="header_cart">
+                    <a ng-show="isLoggedIn" ng-click="goToCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Cart(<span class="cart_amount">{{cartAmount}}</span>)</a>
+                </div>
+            </div>
+        </header>
             <section class="container">
                 <div class="title"></div>
                 <div class="sub_title"></div>

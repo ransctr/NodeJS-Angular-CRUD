@@ -8,7 +8,6 @@ app.directive("item", function() {
         },*/
         replace: true,
         templateUrl : 'app/Templates/Directives/item.html',
-//        template : '<div>item= {{itm.price}}</div>',
         link: function(scope, element, attrs){
             //console.log(element);
         },

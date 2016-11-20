@@ -1,8 +1,12 @@
 <div ng-controller="cartCtrl" class="cart_page">
    <h1>Cart</h1>
+
      <div ng-repeat="itm in items" class="store_item">
             <div  item></div>
         </div>
-    <button ng-click="addUserPurchase()">Add Purchase</button>
-    <button ng-click="getUserPurchases()">Get Purchases</button>
+    <div class="cart_bottom">
+        <button ng-click="addUserPurchase()">Buy</button>
+        <button ng-click="getUserPurchases()">Get all purchases</button>
+        <div class="cart_total">Total: {{cartTotal}}</div>
+    </div>
 </div>

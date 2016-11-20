@@ -9,7 +9,7 @@ app.config(["$urlRouterProvider","$stateProvider",function($urlRouterProvider,$s
         url:'/login',
         templateUrl:'Views/login.html',
     })
-     .state('register', {
+    .state('register', {
         url:'/register',
         templateUrl:'Views/register.html',
     })
@@ -20,7 +20,7 @@ app.config(["$urlRouterProvider","$stateProvider",function($urlRouterProvider,$s
 
     })
 
-        .state('store',{
+    .state('store',{
         url:'/store',
         templateUrl:'Views/store.html',
 

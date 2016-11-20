@@ -1,0 +1,20 @@
+<div class="purchases_list">
+    <h2>Receipt</h2>
+
+    <table width="100%">
+        <tr>
+            <td>Product</td>
+            <td>Price</td>
+        </tr>
+        <tr ng-repeat="i in items">
+
+            <td width="80%">{{ i.title}}</td>
+            <td width="20%">{{ i.price }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Total {{cartTotal}}</td>
+        </tr>
+    </table>
+
+</div>

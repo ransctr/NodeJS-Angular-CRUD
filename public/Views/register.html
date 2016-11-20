@@ -1,16 +1,18 @@
 <div ng-controller="regCtrl">
     <div class="reg_container">
-        <form class="reg_form" action="">
+        <form class="reg_form forms">
             <lable>Name:</lable>
-            <input type="text" ng-model="name">
+            <input type="text" ng-model="name" name="name">
             <lable>Email:</lable>
-            <input type="text" ng-model="email">
-            <lable>Password:</lable>
-            <input type="text" ng-model="password">
+            <input type="text" ng-model="email" name="email">
+            <lable >Password:</lable>
+            <input type="text" ng-model="password" name="password">
+            <span class="login_message">{{message}}</span>
+             <button class="orange_btn" ng-click="add()">Register</button>
 
         </form>
       <!--  <input class="btn btn-primary" type="button" value="addUser" ng-click="add()">-->
-        <button class="btn btn-primary" ng-click="add()">Reg</button>
+
     </div>
 
 </div>

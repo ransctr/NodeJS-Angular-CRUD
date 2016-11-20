@@ -1,5 +1,14 @@
-<table>
-  <tr ng-repeat="i in items">
-    <td>{{ i.title }}ff</td>
-  </tr>
-</table>
+<div class="purchases_list">
+    <h2>{{userLoggedIn.name}} Purchases History</h2>
+    <table width="100%">
+        <tr>
+            <td>Date</td>
+            <td>Total Price</td>
+        </tr>
+        <tr ng-repeat="i in purchases">
+
+            <td width="80%">{{ i.date | date : "EEEE HH h:mm a"}}</td>
+            <td width="20%">{{ i.total }}</td>
+        </tr>
+    </table>
+</div>

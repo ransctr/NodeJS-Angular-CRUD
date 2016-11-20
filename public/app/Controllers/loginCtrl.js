@@ -4,7 +4,11 @@ app.controller("loginCtrl",["$scope","$rootScope","$state","userService",functio
 
 
     function init(){
+        console.log("login ctrl")
         $scope.userName = "";
+        if($rootScope.isLoggedIn){
+            $state.go('home');
+        }
     }
 
 
@@ -12,9 +16,7 @@ app.controller("loginCtrl",["$scope","$rootScope","$state","userService",functio
         //simple login logic
         //check DB if user exist
        userService.getUser($scope.userName).then(function(user){
-       if(!user.data){
-           alert("no user found")
-       } else {
+       if(user.data){
            //USER FOUND
            if($scope.password == user.data.local.password){
                //Pass correct
@@ -23,9 +25,12 @@ app.controller("loginCtrl",["$scope","$rootScope","$state","userService",functio
                localStorage.setItem("loggedUser", JSON.stringify(user.data));
                 $state.go('home')
            } else {
-               $scope.message = "Wrong password"
-           }
+               $scope.message = "Wrong password";
 
+           }
+       } else{
+           //NO USER FOUND
+           $scope.message = "User not exits";
        }
 
        })

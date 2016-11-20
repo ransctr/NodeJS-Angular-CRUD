@@ -2,19 +2,23 @@ app.controller("regCtrl",["$scope","$rootScope","$state","userService",function(
 
 
     $scope.add = function(){
-        console.log("add")
         var myUser = {
             name: $scope.name,
             password: $scope.password,
             email : $scope.email,
-
         }
 
         userService.addUser(myUser).then(function(res){
-            $rootScope.isLoggedIn = true
-            $state.go('home');
+            if(res.data){
+                $rootScope.isLoggedIn = true
+                $rootScope.userLoggedIn = res.data
+                 localStorage.setItem("loggedUser", JSON.stringify(res.data));
+                $state.go('home');
+            } else {
+                $scope.message = "Email already Exists"   ;
+            }
         },function(err){
-            alert(err.data)
+            console.log(err.data)
         })
     }
 

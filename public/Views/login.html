@@ -1,11 +1,16 @@
 <div ng-controller="loginCtrl">
    <h1>Login</h1>
-    <form class="login_form">
+    <form class="login_form forms">
         <input ng-model="userName"  class="" type="text" placeholder="username">
         <input ng-model="password" class="" type="text" placeholder="password">
-        <button ng-click="autentication()" class="">Login</button>
+        <span class="login_message">{{message}}</span>
+        <div class="btns_wrap">
+             <button ng-click="autentication()" class="login_btn green_btn">Login</button>
+             <button class="reg_btn orange_btn" ui-sref="register">Register</button>
+        </div>
+
     </form>
     <br/><br/>
-    <button class="reg_btn" ui-sref="register">Register</button>
-<h2 class="login_message">{{message}}</h2>
+
+
 </div>

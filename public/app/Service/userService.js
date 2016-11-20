@@ -3,7 +3,6 @@ app.service("userService", ["$http","$rootScope", function ($http,$rootScope) {
     var service = this;
 
     service.getUser = function (user) {
-        console.log("service call - get user: " + user);
         return $http({
             method: 'GET',
             url: '/api/users/getUser/' + user,
@@ -17,21 +16,19 @@ app.service("userService", ["$http","$rootScope", function ($http,$rootScope) {
 
     service.addUser = function (data) {
         return $http.post('/api/users/addUser', data)
-            .success(function (data) {
+            .success(function (userCreated) {
                 // $scope.formData = {}; // clear the form so our user is ready to enter another
-                return data
-                console.log(data);
+                return userCreated
             })
-            .error(function (data) {
-                console.log('Error: ' + data);
+            .error(function (userCreated) {
+                console.log('Error: ' + userCreated);
             });
     };
 
-    service.addUserPurchase = function (data) {
-        return $http.post('/api/users/addUserPurchase/'+$rootScope.userLoggedIn._id, data)
+    service.addUserPurchase = function (data , total) {
+        return $http.post('/api/users/addUserPurchase/'+$rootScope.userLoggedIn._id, {items:data, total:total})
             .success(function (data) {
                 return data
-
             })
             .error(function (data) {
                 console.log('Error: ' + data);
