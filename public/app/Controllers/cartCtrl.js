@@ -1,30 +1,48 @@
-app.controller('cartCtrl', ['$scope', "$state", 'cartFac', '$mdDialog', "userService", function ($scope, $state, cartFac, $mdDialog, userService) {
+app.controller('cartCtrl', ['$scope','$rootScope', 'storeFac', '$mdDialog', "userService", function ($scope, $rootScope, storeFac, $mdDialog, userService) {
 
-    $scope.purchases;
-    $scope.cartTotal;
 
-    $scope.add = function () {
-        cartFac.addItemToCart($scope.cartItem);
-        // $scope.cartTotal = cartFac.cartItems
-
+    function init() {
+        $scope.items = storeFac.cartItems;
+        $scope.purchases;
+        getCartTotal()
+        $scope.cartPage = true
     }
 
+    //Remove item from cart
+    $scope.removeFromCart = function (index, item) {
+        storeFac.removeFromCart(index, item);
+        getCartTotal();
+        $rootScope.cartAmount = storeFac.cartItems.length;
+    }
+
+
+    //Calc cart total
+    var getCartTotal = function () {
+        var tot = 0;
+        for (i of $scope.items) {
+            tot = tot + i.price;
+        }
+        $scope.cartTotal = tot
+    }
+
+    //Add Current purchase after clicking 'Buy' - and add Dialog
     $scope.addUserPurchase = function () {
-        userService.addUserPurchase(cartFac.cartItems, $scope.cartTotal)
-            .then(function (callback) {
-/*                console.log("purchases added: " + callback)*/
-            }).then(function () {
-             $mdDialog.show({
-                templateUrl: 'app/Templates/Dialogs/receipt.html',
-                clickOutsideToClose: true,
-                scope: $scope,
-                preserveScope: true,
-                 locals: { items: cartFac.cartItems }
+        userService.addUserPurchase(storeFac.cartItems, $scope.cartTotal)
+            .then(function () {
+                $mdDialog.show({
+                    templateUrl: 'app/Templates/Dialogs/buy.html',
+                    clickOutsideToClose: true,
+                    scope: $scope,
+                    preserveScope: true,
+                    locals: {
+                        items: storeFac.cartItems
+                    },
+                    controller: DialogController
+                });
             });
-        });
     }
 
-
+    //Get purchases history - show dialog with user list
     $scope.getUserPurchases = function () {
         userService.getUserPurchases().then(function (callback) {
             $scope.purchases = callback.data;
@@ -38,20 +56,25 @@ app.controller('cartCtrl', ['$scope', "$state", 'cartFac', '$mdDialog', "userSer
         })
     }
 
-
-    var getCartTotal = function () {
-        var tot = 0;
-        for (i of $scope.items) {
-            tot =tot + i.price;
-            console.log("price added : "+ tot)
+    //Controller for Buy (addUserPurchase) dialog
+    function DialogController($scope, $mdDialog, items) {
+        $scope.showRecDialog = function () {
+            $mdDialog.show({
+                templateUrl: 'app/Templates/Dialogs/receipt.html',
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true,
+                locals: {
+                    items: storeFac.cartItems
+                },
+                controller: DialogController
+            });
         }
-       $scope.cartTotal = tot
-    }
+        //Close button
+        $scope.closeDialog = function () {
+            $mdDialog.hide();
+        }
 
-    function init() {
-        $scope.items = cartFac.cartItems;
-        $scope.purchases;
-        getCartTotal()
     }
 
     return init();

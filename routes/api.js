@@ -13,9 +13,8 @@ router.use(bodyParser.urlencoded({
 router.use(bodyParser.json());
 
 
-
+//Get user by email
 router.get('/users/getUser/:email', function (req, res) {
-
     User.findOne({
         'local.email': req.params.email
     }, function (err, user) {
@@ -24,17 +23,19 @@ router.get('/users/getUser/:email', function (req, res) {
     });
 });
 
-
+//Create new user
 router.post('/users/addUser', function (req, res) {
-    User.findOne({
-            'local.email': req.body.email
-        }).exec()
+    //check if exist
+    User.findOne({'local.email': req.body.email}).exec()
         .then(function (user) {
+            //User Exists
             if (user) {
                 console.log("Email is taken")
                 res.send(false);
                 return
+            //User Not exist
             } else {
+                //CREATE User
                 User.create({
                     _id: mongoose.Types.ObjectId(),
                     name: req.body.name,
@@ -45,31 +46,27 @@ router.post('/users/addUser', function (req, res) {
                     console.log("User Created");
                     res.send(user);
                     return
-                }).catch(function(err){
-                              console.log("DB error", err.message)
-                                return done(err);
-                            });
-
+                })
             }
-
-        }).catch(function(err){
-                              console.log("DB error", err.message)
-                                return done(err);
-                            });
+        }).catch(function (err) {
+            console.log("DB error", err.message)
+            return done(err);
+        });
 });
 
+//Add user purchase
 router.post('/users/addUserPurchase/:id', function (req, res) {
-    var purchase = new Purchase(
-    {
-        _id         : mongoose.Types.ObjectId(),
-        items       : req.body.items,
-        total       : req.body.total
+    //Create New purchase schema
+    var purchase = new Purchase({
+        _id: mongoose.Types.ObjectId(),
+        items: req.body.items,
+        total: req.body.total
     });
     User.findOneAndUpdate({
             "_id": req.params.id
         }, {
-             "$push": {
-                "user_purchases": purchase,
+            "$push": {
+                "user_purchases": purchase
             }
         }).then(function (data) {
             console.log("Purchase Added")
@@ -81,16 +78,15 @@ router.post('/users/addUserPurchase/:id', function (req, res) {
         });
 });
 
+//Get all user purchases
 router.get('/users/getUserPurchases/:id', function (req, res) {
-
     User.findOne({
         '_id': req.params.id
     }, function (err, user) {
-        console.log("purchases found: ", user.user_purchases.length)
+        console.log("Purchases found: ", user.user_purchases.length)
         res.send(user.user_purchases);
     });
 });
-
 
 
 module.exports = router;

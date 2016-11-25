@@ -8,7 +8,7 @@
         <tr ng-repeat="i in purchases">
 
             <td width="80%">{{ i.date | date : "EEEE HH h:mm a"}}</td>
-            <td width="20%">{{ i.total }}</td>
+            <td width="20%">{{ i.total | currency:"$":2 }}</td>
         </tr>
     </table>
 </div>

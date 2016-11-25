@@ -1,15 +1,19 @@
 <div ng-controller="storeCtrl" class="flex-row">
 
     <div class="filters side_links">
+
+         <input class="store_search" class="searchFilter" ng-model="searchFilter.title" placeholder="Seach book title">
+
+        <h3><strong>Sort By:</strong></h3>
         <ul>
             <li><a ng-click="orderByMe('price')">Price</a></li>
-            <li><a ng-click="orderByMe('name')">Name</a></li>
+            <li><a ng-click="orderByMe('title')">Title</a></li>
 
         </ul>
 
     </div>
     <div class="store_items_container">
-        <div ng-repeat="itm in items  | orderBy:myOrderBy" class="store_item">
+        <div ng-repeat="itm in items  | filter: searchFilter | orderBy:myOrderBy" class="store_item">
             <div item itmmm="itm.title"></div>
         </div>
     </div>

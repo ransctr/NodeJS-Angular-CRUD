@@ -5,8 +5,8 @@
     min-height: auto;
     margin: 0 10px;
     margin-bottom: 30px;
-
 }
+
 
 .cart_page .store_item_wrapper {
     position: relative;
@@ -32,6 +32,52 @@
     max-height: 200px;
 }
 
+.cart_page .item_cart_remove i{
+    font-size: 20px;
+    cursor: pointer
+}
+
+.cart_page .cart_addToCart_btn{
+     background-color: none;
+    border: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    cursor: default;
+}
+
+.cart_addToCart_btn i{
+    display: none;
+}
+
+.cart_page .cart_price{
+    color: #000;
+    font-size: 18px;
+
+}
+
+.cart_page .item_imageCover img{
+    box-shadow: 0 1px 4px rgba(0,0,1,.5);
+}
+
+.cart_page .item_buttons{
+    justify-content: flex-end;
+}
+
+.cart_page .item_cart_remove{
+    margin-left: 15px;
+}
+
+.fade.ng-hide {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+
+
+.cart_page .item_cart_remove i:hover{
+    color: red
+}
+
 .cart_bottom {
     display: flex;
     justify-content: space-between;
@@ -46,6 +92,13 @@ md-dialog{
     width:100%;
     max-width: 600px
 }
+
+
+md-dialog-actions button{
+   margin: 5px 10px
+}
+
+/*---PURCHASES LIST---*/
 
 .purchases_list h2{
     margin-top: 0;
@@ -63,6 +116,10 @@ md-dialog{
 
 }
 
+.purchases_list table tr:first-child{
+    font-weight: 600;
+}
+
 .purchases_list table tr:nth-child(odd){
     background-color: #e2e2e2;
 }
@@ -72,6 +129,7 @@ md-dialog{
 
 .purchases_list table tr:last-child{
     background-color: rgb(255, 255, 255);
+    font-weight: 600;
 }
 
 .purchases_list table tr td{
@@ -79,9 +137,7 @@ md-dialog{
     border: 1px solid #ffffff
 }
 
-.purchases_list table tr td:last-child{
- font-weight: 600;
-}
+
 
 
 

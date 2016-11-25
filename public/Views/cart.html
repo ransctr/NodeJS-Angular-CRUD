@@ -5,8 +5,8 @@
             <div  item></div>
         </div>
     <div class="cart_bottom">
-        <button ng-click="addUserPurchase()">Buy</button>
+        <button class="orange_btn lrg_btn" ng-click="addUserPurchase()">Buy</button>
         <button ng-click="getUserPurchases()">Get all purchases</button>
-        <div class="cart_total">Total: {{cartTotal}}</div>
+        <div class="cart_total">Total: {{cartTotal | currency:"$":2}}</div>
     </div>
 </div>

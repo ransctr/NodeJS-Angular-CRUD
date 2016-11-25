@@ -1,7 +1,8 @@
 <div ng-controller="loginCtrl">
    <h1>Login</h1>
-    <form class="login_form forms">
+    <form class="login_form forms" name="form" novalidate>
         <input ng-model="userName"  class="" type="text" placeholder="username">
+        <span class="login_message" ng-show="form.$submitted && form.name.$invalid">Name is required</span>
         <input ng-model="password" class="" type="text" placeholder="password">
         <span class="login_message">{{message}}</span>
         <div class="btns_wrap">

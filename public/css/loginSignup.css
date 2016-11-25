@@ -1,6 +1,24 @@
+.login_message_div{
+    position: relative
+
+}
+
 .login_message{
     color: red;
     height: 30px;
+    font-size:12px;
+    top:-20px;
+    transition: all ease-in 0.3s;
+
+}
+
+h1{
+    text-align: center;
+}
+
+.login_message.ng-hide {
+  height: 0;
+    opacity: 0;
 }
 
 .reg_btn{
@@ -36,15 +54,16 @@
     margin-bottom: 20px;
     padding-bottom: 5px;
     border: 0;
-    background: none;
-    border-bottom: 2px solid #cccccc;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 2px solid #696969;
     transition: all 0.4s;
+    color:black;
+    outline: none;
 }
 
 .forms:focus, input:focus{
-    outline: none;
-     border-bottom: 2px solid #ff8000;
-    color:black;
+     border-bottom: 2px solid #3c3c3c;
+
 }
 .forms .login_btn{
    /* margin-bottom: 20px*/
@@ -57,5 +76,21 @@
 
 .forms .btns_wrap button{
  width: calc(50% - 10px);
+}
+
+.forms input.ng-valid.ng-touched{
+    border-color:green;
+
+}
+
+.forms input.ng-invalid.ng-touched {
+    background-color: rgba(255, 255, 255, 0);
+    border-color:#ff1e1e;
+
+}
+
+.forms .ng-pristine{
+     /*border-color:#222222;*/
+
 }
 

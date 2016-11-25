@@ -1,7 +1,8 @@
-app.service("userService", ["$http","$rootScope", function ($http,$rootScope) {
+app.service("userService", ["$http", "$rootScope", function ($http, $rootScope) {
 
     var service = this;
 
+    //Get user From DB
     service.getUser = function (user) {
         return $http({
             method: 'GET',
@@ -14,10 +15,10 @@ app.service("userService", ["$http","$rootScope", function ($http,$rootScope) {
         })
     }
 
+     //Get add new user to DB
     service.addUser = function (data) {
         return $http.post('/api/users/addUser', data)
             .success(function (userCreated) {
-                // $scope.formData = {}; // clear the form so our user is ready to enter another
                 return userCreated
             })
             .error(function (userCreated) {
@@ -25,8 +26,12 @@ app.service("userService", ["$http","$rootScope", function ($http,$rootScope) {
             });
     };
 
-    service.addUserPurchase = function (data , total) {
-        return $http.post('/api/users/addUserPurchase/'+$rootScope.userLoggedIn._id, {items:data, total:total})
+    //Add current user purchase to DB
+    service.addUserPurchase = function (data, total) {
+        return $http.post('/api/users/addUserPurchase/' + $rootScope.userLoggedIn._id, {
+                items: data,  // Send cart data
+                total: total  // Send total
+            })
             .success(function (data) {
                 return data
             })
@@ -35,8 +40,9 @@ app.service("userService", ["$http","$rootScope", function ($http,$rootScope) {
             });
     };
 
-       service.getUserPurchases = function (data) {
-        return $http.get('/api/users/getUserPurchases/'+$rootScope.userLoggedIn._id)
+    //Get all user purchases from DB
+    service.getUserPurchases = function (data) {
+        return $http.get('/api/users/getUserPurchases/' + $rootScope.userLoggedIn._id)
             .success(function (data) {
                 return data
             })
@@ -44,7 +50,6 @@ app.service("userService", ["$http","$rootScope", function ($http,$rootScope) {
                 console.log('Error: ' + data);
             });
     };
-
 
 
     return service;

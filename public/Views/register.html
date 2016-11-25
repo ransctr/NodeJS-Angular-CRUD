@@ -1,14 +1,17 @@
 <div ng-controller="regCtrl">
     <div class="reg_container">
-        <form class="reg_form forms">
+        <form class="reg_form forms" name="form" novalidate>
             <lable>Name:</lable>
-            <input type="text" ng-model="name" name="name">
+            <input type="text" ng-valid ng-model="name" name="name" required>
+            <span class="login_message" ng-show="form.$submitted && form.name.$invalid">Name is required</span>
             <lable>Email:</lable>
-            <input type="text" ng-model="email" name="email">
+            <input type="email" ng-model="email" name="email" required>
+             <span class="login_message" ng-show="form.$submitted && form.email.$invalid">Email is invalid</span>
             <lable >Password:</lable>
-            <input type="text" ng-model="password" name="password">
+            <input type="password" ng-model="password" name="password" required>
+            <span class="login_message" ng-show="form.$submitted && form.password.$invalid">Invalid password</span>
             <span class="login_message">{{message}}</span>
-             <button class="orange_btn" ng-click="add()">Register</button>
+             <button  class="orange_btn" ng-click="submitUser(form.$valid)">Register</button>
 
         </form>
       <!--  <input class="btn btn-primary" type="button" value="addUser" ng-click="add()">-->

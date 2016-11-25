@@ -9,12 +9,11 @@
         <tr ng-repeat="i in items">
 
             <td width="80%">{{ i.title}}</td>
-            <td width="20%">{{ i.price }}</td>
+            <td width="20%">{{ i.price | currency:"$":2}}</td>
         </tr>
         <tr>
             <td></td>
-            <td>Total {{cartTotal}}</td>
+            <td>Total {{cartTotal | currency:"$":2}}</td>
         </tr>
     </table>
-
 </div>
