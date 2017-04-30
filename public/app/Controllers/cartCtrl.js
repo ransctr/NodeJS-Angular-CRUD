@@ -15,7 +15,6 @@ app.controller('cartCtrl', ['$scope','$rootScope', 'storeFac', '$mdDialog', "use
         $rootScope.cartAmount = storeFac.cartItems.length;
     }
 
-
     //Calc cart total
     var getCartTotal = function () {
         var tot = 0;

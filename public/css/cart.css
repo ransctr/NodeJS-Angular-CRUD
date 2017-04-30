@@ -37,13 +37,7 @@
     cursor: pointer
 }
 
-.cart_page .cart_addToCart_btn{
-     background-color: none;
-    border: 0;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    cursor: default;
-}
+
 
 .cart_addToCart_btn i{
     display: none;
@@ -52,7 +46,7 @@
 .cart_page .cart_price{
     color: #000;
     font-size: 18px;
-
+background-color: rgba(255, 255, 255, 0)
 }
 
 .cart_page .item_imageCover img{
@@ -104,7 +98,7 @@ md-dialog-actions button{
     margin-top: 0;
 }
 
-.purchases_list{
+.purchases_list,.recipt_list{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,18 +110,18 @@ md-dialog-actions button{
 
 }
 
-.purchases_list table tr:first-child{
+table tr:first-child{
     font-weight: 600;
 }
 
-.purchases_list table tr:nth-child(odd){
+table tr:nth-child(odd){
     background-color: #e2e2e2;
 }
-.purchases_list table tr:nth-child(even){
+table tr:nth-child(even){
     background-color: #f5f5f5;
 }
 
-.purchases_list table tr:last-child{
+.recipt_list table tr:last-child{
     background-color: rgb(255, 255, 255);
     font-weight: 600;
 }

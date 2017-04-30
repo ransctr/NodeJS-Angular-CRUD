@@ -1,12 +1,13 @@
 <div ng-controller="loginCtrl">
    <h1>Login</h1>
     <form class="login_form forms" name="form" novalidate>
-        <input ng-model="userName"  class="" type="text" placeholder="username">
-        <span class="login_message" ng-show="form.$submitted && form.name.$invalid">Name is required</span>
-        <input ng-model="password" class="" type="text" placeholder="password">
+        <input ng-model="userName"  class="" type="text" name="username" placeholder="username" required>
+        <span class="login_message" ng-show="form.$submitted && form.username.$invalid">User Name is required</span>
+        <input ng-model="password" class="" type="text" name="password" placeholder="password" required>
+        <span class="login_message" ng-show="form.$submitted && form.password.$invalid">Password is required</span>
         <span class="login_message">{{message}}</span>
         <div class="btns_wrap">
-             <button ng-click="autentication()" class="login_btn green_btn">Login</button>
+             <button ng-click="autentication(form.$valid)" class="login_btn green_btn">Login</button>
              <button class="reg_btn orange_btn" ui-sref="register">Register</button>
         </div>
 

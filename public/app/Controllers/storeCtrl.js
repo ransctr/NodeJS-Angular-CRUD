@@ -1,6 +1,6 @@
 app.controller("storeCtrl", ["$scope", "$rootScope", "storeFac", function ($scope, $rootScope, storeFac) {
 
-
+$scope.inCart
 
     function init() {
         //set cartAmout
@@ -16,34 +16,23 @@ app.controller("storeCtrl", ["$scope", "$rootScope", "storeFac", function ($scop
 
 
     //Add to cart actions
-    $scope.addToCart = function (item, i) {
-        if (!$scope.items[i].added) {
-            //mark item as added
-            $scope.items[i].added = true;
-        } else {
-            return;
-        }
+    $scope.addToCart = function (item) {
         storeFac.addItemToCart(item)
-        $rootScope.cartAmount = storeFac.cartItems.length;
-
+        $rootScope.cartAmount = storeFac.cartItems.length;      
     }
 
+    //check if item added
     $scope.isItemInCart = function(id){
         var cartItems = storeFac.cartItems;
-        var isExist = false;
+        $scope.inCart = false;
         if(cartItems.length==0)return
-        console.log("isItemInCart: ", id)
-        //for(ci of storeFac.cartItems){
         for(var i =0 ; i< cartItems.length ; i++){
-            //console.log("ci",ci)
             if(cartItems[i].id == id){
-                console.log("exist in cart:", cartItems[i].id)
-                return true
+                $scope.inCart = true
+                return
             }
-
-        }
-        return isExist
-    }
-
+        }   
+    }   
+    
     return init();
 }]);

@@ -118,9 +118,9 @@ app.factory("storeFac", function () {
 
     //Remove item from cart
     store.removeFromCart = function (index, itm) {
-        /*remove from array*/
+        /*remove from cart array*/
         store.cartItems.splice(index, 1)
-            /*Remove added from all products*/
+        /*Remove added from all products*/
         for (prod of allPoducts) {
             if (itm.id === prod.id) {
                 prod.added = false;
@@ -128,6 +128,7 @@ app.factory("storeFac", function () {
         }
     }
 
+    //Clear all cart items
     store.clearCart = function(){
         store.cartItems = [];
         //Remove added from all products

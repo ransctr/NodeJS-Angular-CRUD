@@ -8,7 +8,8 @@ app.controller("loginCtrl", ["$scope", "$rootScope", "$state", "userService", fu
     }
 
     //Login Autentication
-    $scope.autentication = function () {
+    $scope.autentication = function (valid) {
+        if(!valid)return
         //simple autentication logic
         //check DB if user exist
         userService.getUser($scope.userName).then(function (user) {

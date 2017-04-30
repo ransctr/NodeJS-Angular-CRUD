@@ -1,4 +1,5 @@
 <div class="store_item_wrapper">
+   {{isItemInCart(itm.id)}}
     <div class="item_imageBG">
         <div class="item_imageCover">
             <img src="{{itm.img_url}}" alt="{{itm.title}}">
@@ -10,10 +11,12 @@
         <div class="item_desc_text"><strong>By </strong>{{itm.by}}</div>
     </div>
     <div class="item_buttons">
-       <!--ADD TO CART-->
-        <button ng-class="{item_addToCart_btn : !itm.added, cart_addToCart_btn : cartPage }" ng-click="addToCart(itm)"><span ng-class="{item_price : storePage , cart_price : cartPage}">{{itm.price | currency:"$":2}}</span><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+       <!--ADD TO CART / PRICE-->
+        <button ng-class="{item_addToCart_btn : !inCart, item_addToCart_btn_dis : inCart}"  ng-show="storePage" ng-click="addToCart(itm)"><span class="item_price">{{itm.price | currency:"$":2}}</span><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+        <!-- CART PRICE -->
+        <div class="cartPrice" ng-show="cartPage">{{itm.price | currency:"$":2}}</div>
         <!--ADDED TEXT-->
-        <div ng-show="isItemInCart(itm.id) && storePage" class="item_added"><i class="fa fa-check" aria-hidden="true"></i> ADDED</div>
+        <div ng-show="inCart && storePage" class="item_added"><i class="fa fa-check" aria-hidden="true"></i> ADDED</div>
         <!--REMOVE BTN-->
         <div ng-show="cartPage" class="item_cart_remove" ng-click="removeFromCart($index , itm)"><i class="fa fa-times" aria-hidden="true"></i></div>
     </div>
