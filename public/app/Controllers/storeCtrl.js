@@ -15,10 +15,15 @@ $scope.inCart
     }
 
 
+
     //Add to cart actions
     $scope.addToCart = function (item) {
+		var cartList = storeFac.cartItems;
+		for (var i = 0; i < cartList.length; i++) {
+			if (cartList[i] === item) {return;} //Item exists
+    	}	
         storeFac.addItemToCart(item)
-        $rootScope.cartAmount = storeFac.cartItems.length;      
+        $rootScope.cartAmount = storeFac.cartItems.length;    	
     }
 
     //check if item added
